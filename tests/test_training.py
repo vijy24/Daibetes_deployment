@@ -1,6 +1,9 @@
 import pytest
 import pandas as pd
 import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from training import load_data, train_model, save_model
 
 def test_load_data_empty(tmp_path):
