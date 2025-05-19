@@ -18,6 +18,11 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install pytest
-      - name: Run tests
+          pip install pytest requests
+      - name: Run unit tests
         run: pytest
+      - name: Run smoke test against AzureML endpoint
+        env:
+          AZUREML_ENDPOINT: ${{ secrets.AZUREML_REST_ENDPOINT }}
+        run: python smoke_test.py
+
